@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To manually build this package run dotnet.exe pack /p:PackageVersion=1.0.0 /p:NuspecFile=Trino.Data.ADO.nuspec -->
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Trino.Data.ADO</id>
+    <version>$version$</version>
+    <title>Microsoft ADO.NET Trino Client</title>
+    <authors>Microsoft</authors>
+    <description>Trino ADO.NET Client</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Trino.Client" version="$version$" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="[1,)" exclude="Build,Analyzers" /> 
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin\Release\netstandard2.0\Trino.Data.ADO.dll" target="lib\netstandard2.0\Trino.Data.ADO.dll" />
+  </files>
+</package>

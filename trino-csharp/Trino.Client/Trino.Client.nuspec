@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Trino.Client</id>
+    <version>$version$</version>
+    <title>Trino Client</title>
+    <authors>Trino</authors>
+    <description>.NET Standard Trino Client. Install Trino.Data.ADO for ADO.NET capabilities.</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="[13.0.1,)" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="[1,)" exclude="Build,Analyzers" /> 
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard2.0\Trino.Client.dll" target="lib\netstandard2.0\Trino.Client.dll" />
+  </files>
+</package>

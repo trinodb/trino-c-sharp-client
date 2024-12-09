@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32804.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trino.Client", "Trino.Client\Trino.Client.csproj", "{777504D0-F2D6-4AD0-8950-0E752F3B28E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trino.Client.Samples", "Trino.Client.Samples\Trino.Client.Samples.csproj", "{6D317B30-419C-42E8-AB13-501671F295A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{24924D10-7B39-4FA7-84C0-EE8976953988}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trino.Data.ADO", "Trino.Data.ADO\Trino.Data.ADO.csproj", "{27C6A7AC-2B07-465E-94F1-4C8F7E683E15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trino.Client.Test", "Trino.Client.Test\Trino.Client.Test.csproj", "{4116DA69-9B5B-4BE2-996C-FA959F81ABFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trino.Client.Authentication", "Trino.Client.Auth\Trino.Client.Auth.csproj", "{4D4233A0-4473-4BF2-A5AA-2AA0409E7FC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{777504D0-F2D6-4AD0-8950-0E752F3B28E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777504D0-F2D6-4AD0-8950-0E752F3B28E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777504D0-F2D6-4AD0-8950-0E752F3B28E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777504D0-F2D6-4AD0-8950-0E752F3B28E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D317B30-419C-42E8-AB13-501671F295A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D317B30-419C-42E8-AB13-501671F295A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D317B30-419C-42E8-AB13-501671F295A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D317B30-419C-42E8-AB13-501671F295A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27C6A7AC-2B07-465E-94F1-4C8F7E683E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C6A7AC-2B07-465E-94F1-4C8F7E683E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C6A7AC-2B07-465E-94F1-4C8F7E683E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C6A7AC-2B07-465E-94F1-4C8F7E683E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4116DA69-9B5B-4BE2-996C-FA959F81ABFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4116DA69-9B5B-4BE2-996C-FA959F81ABFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4116DA69-9B5B-4BE2-996C-FA959F81ABFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4116DA69-9B5B-4BE2-996C-FA959F81ABFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4233A0-4473-4BF2-A5AA-2AA0409E7FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4233A0-4473-4BF2-A5AA-2AA0409E7FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4233A0-4473-4BF2-A5AA-2AA0409E7FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4233A0-4473-4BF2-A5AA-2AA0409E7FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E922746-DE64-4ACC-8321-6E9CA502152F}
+	EndGlobalSection
+EndGlobal

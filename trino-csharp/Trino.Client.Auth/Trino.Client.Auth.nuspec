@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Trino.Client.Authentication.Azure</id>
+    <version>$version$</version>
+    <title>Microsoft Trino Client Azure Authentication</title>
+    <authors>Microsoft</authors>
+    <description>Provides implementations of ITrinoAuth for Azure Authentication</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Trino.Client" version="$version$" exclude="Build,Analyzers" />
+        <dependency id="Trino.Data.ADO" version="$version$" exclude="Build,Analyzers" />
+        <dependency id="Azure.Identity" version="[1,)" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="[1,)" exclude="Build,Analyzers" /> 
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin\Release\netstandard2.0\Trino.Client.Authentication.Azure.dll" target="lib\netstandard2.0\Trino.Client.Authentication.Azure.dll" />
+  </files>
+</package>

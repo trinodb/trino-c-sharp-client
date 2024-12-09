@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <PackageId>Microsoft.Trino.SampleClient</PackageId>
+    <Authors>Microsoft</Authors>
+    <Product>Trino</Product>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>$([System.DateTime]::Now.ToString("yyyy")).$([System.DateTime]::Now.ToString("MM")).$([System.DateTime]::Now.ToString("dd")).1</Version>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <Description>Trino Client Samples</Description>
+    <Title>Trino Client Samples</Title>
+    <AssemblyVersion></AssemblyVersion>
+    <SignAssembly>False</SignAssembly>
+    <OutputType>Exe</OutputType>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.11.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trino.Data.ADO\Trino.Data.ADO.csproj" />
+    <ProjectReference Include="..\Trino.Client.Auth\Trino.Client.Auth.csproj" />
+  </ItemGroup>
+
+</Project>
