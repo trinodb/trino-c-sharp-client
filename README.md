@@ -13,6 +13,14 @@ A streaming C# Trino client library with ADO.NET interfaces. The priorties for t
 * No dependencies outside of .NET core except Newtonsoft.Json and Microsoft.Extensions.Logging. Authentication in separate library.
 * Alignment with Trino Java client, similar class structure.
 
+## Resources
+
+Project introduction at Trino Summit 2024 by George Fischer
+
+[![YouTube](https://img.youtube.com/vi/x2rF6IEjFK0/0.jpg)](https://www.youtube.com/watch?v=x2rF6IEjFK0)
+
+[Presentation deck](docs/assets/trino-summit-2024-csharp-client.pdf)
+
 ## Libraries
 
 These are the libraries that make up the client:
