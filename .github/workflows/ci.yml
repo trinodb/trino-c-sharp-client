@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up dotnet
+        uses: actions/setup-dotnet@v3
+      - name: Set up msbuild
+        uses: microsoft/setup-msbuild@v2
+      - name: Set up nuget
+        uses: nuget/setup-nuget@v2
+        with:
+          nuget-version: '5.x'
+      - name: Run msbuild
+        run: msbuild trino-csharp/TrinoDriver.sln   
