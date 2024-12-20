@@ -19,5 +19,7 @@ jobs:
         uses: nuget/setup-nuget@v2
         with:
           nuget-version: '5.x'
+      - name: Nuget restore
+        run: nuget restore trino-csharp/TrinoDriver.sln
       - name: Run msbuild
         run: msbuild trino-csharp/TrinoDriver.sln   
