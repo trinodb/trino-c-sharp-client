@@ -143,5 +143,29 @@ namespace Trino.Client.Test
             // verify the connection string can be regenerated
             Assert.IsNotNull(connection.ConnectionString);
         }
+        
+        [TestMethod]
+        public void BasicAuth()
+        {
+            const string host = "host.trino.com";
+            const string auth = "BasicAuth";
+            const string user = "user";
+            const string defaultPort = "443";
+            const string scheme = "https";
+
+            string connectionString =
+                $"host={host};auth={auth};user={user}";
+
+            TrinoConnection connection = new TrinoConnection();
+            connection.ConnectionString = connectionString;
+            Assert.AreEqual(connection.ConnectionSession.Properties.Server.Host, host);
+            Assert.AreEqual(connection.ConnectionSession.Properties.Server.Port.ToString(), defaultPort);
+            Assert.AreEqual(connection.ConnectionSession.Properties.Server.Scheme, scheme);
+            Assert.AreEqual(connection.ConnectionSession.Auth.GetType().Name, auth, StringComparer.InvariantCultureIgnoreCase);
+            Assert.AreEqual(((BasicAuth)connection.ConnectionSession.Auth).User, user);
+
+            // verify the connection string can be regenerated
+            Assert.IsNotNull(connection.ConnectionString);
+        }
     }
 }
