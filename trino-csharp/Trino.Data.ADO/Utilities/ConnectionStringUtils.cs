@@ -296,7 +296,8 @@ namespace Trino.Data.ADO.Utilities
             // JWT is built in, but additional auth providers can originate from other DLLs to keep dependencies minimal
             Type jwtAuth = typeof(TrinoJWTAuth);
             Type ldapAuth = typeof(LDAPAuth);
-            Dictionary<string, Type> authTypes = new Dictionary<string, Type>(StringComparer.InvariantCultureIgnoreCase) { { jwtAuth.Name, jwtAuth }, { ldapAuth.Name, ldapAuth } };
+            Type basicAuth = typeof(BasicAuth);
+            Dictionary<string, Type> authTypes = new Dictionary<string, Type>(StringComparer.InvariantCultureIgnoreCase) { { jwtAuth.Name, jwtAuth }, { ldapAuth.Name, ldapAuth }, {basicAuth.Name, basicAuth} };
 
             if (additionalAuthProviders != null)
             {

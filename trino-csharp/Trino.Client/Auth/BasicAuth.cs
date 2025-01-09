@@ -11,11 +11,6 @@ namespace Trino.Client.Auth
     {
         public BasicAuth()
         {
-            User = "admin";
-        }
-        public BasicAuth(string user)
-        {
-            User = user;
         }
 
         public string User
@@ -28,7 +23,7 @@ namespace Trino.Client.Auth
         {
             if (string.IsNullOrEmpty(User) )
             {
-                throw new ArgumentException("LDAPAuth: username property is null or empty");
+                throw new ArgumentException("BasicAuth: username property is null or empty");
             }
         }
 
