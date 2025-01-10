@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 
 namespace Trino.Data.ADO.Client
 {
@@ -11,52 +12,59 @@ namespace Trino.Data.ADO.Client
     /// </summary>
     public class TrinoParameterCollection : DbParameterCollection
     {
-        private readonly IList<IDataParameter> parameters = new List<IDataParameter>();
+        private readonly List<IDataParameter> parameters = new List<IDataParameter>();
 
-        public override bool IsFixedSize => throw new NotSupportedException();
+        public override bool IsFixedSize => false;
 
-        public override bool IsReadOnly => throw new NotSupportedException();
+        public override bool IsReadOnly => false;
 
         public override int Count => parameters.Count;
 
-        public override bool IsSynchronized => throw new NotSupportedException();
+        public override bool IsSynchronized => false;
 
-        public override object SyncRoot => throw new NotSupportedException();
+        public override object SyncRoot => parameters;
 
         public override int Add(object value)
         {
-            if (value == null) throw new ArgumentNullException("value");
+            if (value == null) throw new ArgumentNullException(nameof(value));
             if (value is IDataParameter parameter)
             {
                 parameters.Add(parameter);
-                return 0;
+                return parameters.Count - 1;
             }
-            return 1;
+
+            throw new ArgumentException("Value must be an IDataParameter", nameof(value));
         }
 
         public override void AddRange(Array values)
         {
-            throw new NotSupportedException();
+            if (values == null) throw new ArgumentNullException(nameof(values));
+            foreach (var value in values)
+            {
+                Add(value);
+            }
         }
 
         public override void Clear()
         {
-            throw new NotSupportedException();
+            parameters.Clear();
         }
 
         public override bool Contains(string parameterName)
         {
-            throw new NotSupportedException();
+            return parameters.Any(
+                p => string.Equals(p.ParameterName, parameterName, StringComparison.OrdinalIgnoreCase));
         }
 
         public override bool Contains(object value)
         {
-            throw new NotSupportedException();
+            return parameters.Contains(value as IDataParameter);
         }
 
         public override void CopyTo(Array array, int index)
         {
-            throw new NotSupportedException();
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            ((IList)parameters).CopyTo(array, index);
         }
 
         public override IEnumerator GetEnumerator()
@@ -66,52 +74,80 @@ namespace Trino.Data.ADO.Client
 
         public override int IndexOf(string parameterName)
         {
-            throw new NotSupportedException();
+            return parameters.Select((p, i) => new { Parameter = p, Index = i })
+                .FirstOrDefault(x => string.Equals(x.Parameter.ParameterName, parameterName, StringComparison.OrdinalIgnoreCase))
+                ?.Index ?? -1;
         }
 
         public override int IndexOf(object value)
         {
-            throw new NotSupportedException();
+            if (value is IDataParameter parameter)
+            {
+                return parameters.IndexOf(parameter);
+            }
+
+            return -1;
         }
 
         public override void Insert(int index, object value)
         {
-            throw new NotSupportedException();
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (value is IDataParameter parameter)
+            {
+                parameters.Insert(index, parameter);
+                return;
+            }
+
+            throw new ArgumentException("Value must be an IDataParameter", nameof(value));
         }
 
         public override void Remove(object value)
         {
-            throw new NotSupportedException();
+            if (value is IDataParameter parameter)
+            {
+                parameters.Remove(parameter);
+            }
         }
 
         public override void RemoveAt(string parameterName)
         {
-            throw new NotSupportedException();
+            var index = IndexOf(parameterName);
+            if (index >= 0)
+            {
+                parameters.RemoveAt(index);
+            }
         }
 
         public override void RemoveAt(int index)
         {
-            throw new NotSupportedException();
+            parameters.RemoveAt(index);
         }
 
         protected override DbParameter GetParameter(int index)
         {
-            throw new NotSupportedException();
+            return parameters[index] as DbParameter;
         }
 
         protected override DbParameter GetParameter(string parameterName)
         {
-            throw new NotSupportedException();
+            return parameters.FirstOrDefault(p => string.Equals(p.ParameterName, parameterName, StringComparison.OrdinalIgnoreCase)) as DbParameter;
         }
 
         protected override void SetParameter(int index, DbParameter value)
         {
-            throw new NotSupportedException();
+            parameters[index] = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         protected override void SetParameter(string parameterName, DbParameter value)
         {
-            throw new NotSupportedException();
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            var index = IndexOf(parameterName);
+            if (index == -1)
+            {
+                throw new ArgumentException($"Parameter {parameterName} not found", nameof(parameterName));
+            }
+
+            parameters[index] = value;
         }
     }
 }
