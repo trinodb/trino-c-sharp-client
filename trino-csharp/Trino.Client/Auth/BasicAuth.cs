@@ -5,7 +5,7 @@ using System.Text;
 namespace Trino.Client.Auth
 {
     /// <summary>
-    /// For testing purposes, you can use the BasicAuth class to authenticate with Trino.
+    /// For setting up basic authentication with a username and optional password.
     /// </summary>
     public class BasicAuth : ITrinoAuth
     {
@@ -19,7 +19,12 @@ namespace Trino.Client.Auth
             set;
         }
 
-        public void AuthorizeAndValidate()
+        public string Password { 
+            get; 
+            set; 
+        }
+
+        public virtual void AuthorizeAndValidate()
         {
             if (string.IsNullOrEmpty(User) )
             {
@@ -33,7 +38,10 @@ namespace Trino.Client.Auth
         /// <param name="httpRequestMessage">Http request message</param>
         public virtual void AddCredentialToRequest(HttpRequestMessage httpRequestMessage)
         {
-            var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{User}" ));
+           var credentials = Convert.ToBase64String(string.IsNullOrEmpty(Password) ? 
+                          Encoding.ASCII.GetBytes($"{User}") : 
+                          Encoding.ASCII.GetBytes($"{User}:{Password}"));
+
             httpRequestMessage.Headers.Add("Authorization", "Basic " + credentials);
         }
     }
