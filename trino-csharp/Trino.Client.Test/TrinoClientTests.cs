@@ -67,6 +67,28 @@ namespace Trino.Client.Test
         }
 
         /// <summary>
+        /// Test NaN values handling in the response
+        /// </summary>
+        [TestMethod]
+        public async Task TestNanProgress()
+        {
+            using (TrinoTestServer server = TrinoTestServer.Create("nan_progress.txt"))
+            {
+                var properties = server.GetConnectionProperties();
+                properties.Catalog = "memory";
+
+                using (TrinoConnection tc = new(properties))
+                {
+                    using (TrinoCommand trinoCommand = new(tc, "INSERT INSERT memory.default.target_table (Id) SELECT Id FROM memory.default.target_table"))
+                    {
+                        var result = await trinoCommand.ExecuteNonQueryAsync(CancellationToken.None);
+                        Assert.AreEqual(result, 0);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Test that after cancellation schema can still be retrieved.
         /// </summary>
         [TestMethod]
