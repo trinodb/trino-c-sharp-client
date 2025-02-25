@@ -47,7 +47,7 @@ namespace Trino.Client.Model.StatementV1
         public long processedBytes { get; set; }
         public long peakMemoryBytes { get; set; }
         public long spilledBytes { get; set; }
-        public long progressPercentage { get; set; }
+        public double progressPercentage { get; set; }
 
         /// <summary>
         /// Get the query execution progress percentage as a ratio
