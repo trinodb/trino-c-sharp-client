@@ -30,7 +30,7 @@ namespace Trino.Client.Model.StatementV1
         /// <summary>
         /// Suppressed errors
         /// </summary>
-        public List<string> suppressed { get; set; }
+        public List<TrinoErrorCause> suppressed { get; set; }
 
         /// <summary>
         /// Cause of the error
